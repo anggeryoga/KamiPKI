@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PKI BACK? - Satire Sejarah Indonesia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap">
+    <style>
+    html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-y: auto !important;
+}
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+        @keyframes flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 22%, 24%, 55% { opacity: 0; }
+        }
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100vh; }
+        }
+        .glitch-effect {
+            animation: glitch 1s linear infinite;
+        }
+        .flicker-text {
+            animation: flicker 3s linear infinite;
+        }
+        .scanlines {
+            position: relative;
+            overflow: hidden;
+        }
+        .scanlines::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 100%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            animation: scanline 4s linear infinite;
+            z-index: 10;
+        }
+        .propaganda-text {
+            font-family: 'Anton', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .typewriter-text {
+            font-family: 'Space Mono', monospace;
+        }
+        .redacted {
+            background-color: black;
+            color: transparent;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .redacted:hover {
+            color: white;
+            background-color: #7f1d1d;
+        }
+        .hover-reveal {
+            position: relative;
+        }
+        .hover-reveal::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: #7f1d1d;
+            color: white;
+            transition: width 0.3s ease;
+        }
+        .hover-reveal:hover::after {
+            width: 100%;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #7f1d1d;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #dc2626;
+            border: 2px solid #7f1d1d;
+        }
+        .glitch-bg {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="50" height="50" x="0" y="0" fill="%23dc2626"/><rect width="50" height="50" x="50" y="50" fill="%23dc2626"/></svg>');
+            background-size: 20px 20px;
+        }
+        .newspaper-texture {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a1a1a"/><path d="M0 0 L100 0 L100 5 L0 5 Z" fill="%23333"/><path d="M0 10 L100 10 L100 15 L0 15 Z" fill="%23333"/><path d="M0 20 L100 20 L100 25 L0 25 Z" fill="%23333"/><path d="M0 30 L100 30 L100 35 L0 35 Z" fill="%23333"/><path d="M0 40 L100 40 L100 45 L0 45 Z" fill="%23333"/><path d="M0 50 L100 50 L100 55 L0 55 Z" fill="%23333"/><path d="M0 60 L100 60 L100 65 L0 65 Z" fill="%23333"/><path d="M0 70 L100 70 L100 75 L0 75 Z" fill="%23333"/><path d="M0 80 L100 80 L100 85 L0 85 Z" fill="%23333"/><path d="M0 90 L100 90 L100 95 L0 95 Z" fill="%23333"/></svg>');
+            background-size: 100% 100%;
+        }
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+        .hover-grow:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="bg-black text-gray-100 scanlines overflow-x-hidden">
+    <!-- Audio Element (hidden) -->
+    <audio id="radioChatter" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Navigation -->
+    <nav class="bg-black border-b border-red-900 sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-3xl font-bold heading-font text-red-500 glitch-text">PKI BACK?</div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#hoax" class="hover:text-red-400 transition">Hoax</a>
+                <a href="#1965" class="hover:text-red-400 transition">1965</a>
+                <a href="#orba" class="hover:text-red-400 transition">Orba</a>
+                <a href="#koruptor" class="hover:text-red-400 transition">Komunis vs Koruptor</a>
+                <a href="#faq" class="hover:text-red-400 transition">FAQ Satire</a>
+            </div>
+            <button id="soundToggle" class="bg-red-900 hover:bg-red-800 px-3 py-1 rounded">
+                <span class="sound-icon">🔊 ON</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <header class="min-h-screen flex items-center justify-center relative overflow-hidden glitch-bg">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-6xl md:text-8xl font-bold propaganda-text mb-6 flicker-text">
+                <span class="text-red-600">PKI</span> <span class="text-white">BACK?</span>
+            </h1>
+            <div class="text-xl md:text-2xl typewriter-text mb-8">
+                <span class="inline-block mr-2">Propaganda?</span>
+                <span class="inline-block mr-2">Korban?</span>
+                <span class="inline-block">Kebenaran?</span>
+            </div>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+                <span class="redacted">PKI bukan kembali — tapi kebohongan sejarah yang belum selesai.</span>
+            </p>
+            <button class="bg-red-900 hover:bg-red-800 text-white px-8 py-3 rounded propaganda-text uppercase tracking-wider hover-glow">
+                Jelajahi Kebohongan
+            </button>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center">
+            <svg class="animate-bounce w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Section 1: Siapa Bilang PKI Bangkit? -->
+    <section id="hoax" class="py-20 newspaper-texture">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold propaganda-text mb-12 text-center">
+                <span class="text-red-600">Siapa Bilang</span> <span class="text-white">PKI Bangkit?</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Hoax Card 1 -->
+                <div class="bg-gray-900 border border-red-900 p-6 rounded hover-grow">
+                    <div class="text-red-500 text-3xl mb-4">1980</div>
+                    <h3 class="text-xl font-bold mb-3">"PKI Akan Bangkit Lagi"</h3>
+                    <p class="text-gray-300 mb-4">Peringatan Orde Baru tentang kebangkitan PKI setelah 15 tahun dibubarkan.</p>
+                    <div class="text-sm text-gray-400 italic">"Mereka akan kembali melalui seni dan budaya" - Kopkamtib</div>
+                </div>
+                
+                <!-- Hoax Card 2 -->
+                <div class="bg-gray-900 border border-red-900 p-6 rounded hover-grow">
+                    <div class="text-red-500 text-3xl mb-4">1998</div>
+                    <h3 class="text-xl font-bold mb-3">"Reformasi = PKI"</h3>
+                    <p class="text-gray-300 mb-4">Gerakan mahasiswa dikaitkan dengan kebangkitan komunisme.</p>
+                    <div class="text-sm text-gray-400 italic">"Mereka menggunakan demokrasi sebagai kedok" - Media Orba</div>
+                </div>
+                
+                <!-- Hoax Card 3 -->
+                <div class="bg-gray-900 border border-red-900 p-6 rounded hover-grow">
+                    <div class="text-red-500 text-3xl mb-4">2019</div>
+                    <h3 class="text-xl font-bold mb-3">"Jokowi PKI"</h3>
+                    <p class="text-gray-300 mb-4">Presiden terpilih dituduh sebagai simpatisan komunis.</p>
+                    <div class="text-sm text-gray-400 italic">"Bukti-bukti palsu beredar di media sosial" - Fact Checker</div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-400 max-w-3xl mx-auto">
+                    <span class="hover-reveal" data-text="Setiap kali kekuasaan merasa terancam, hantu PKI dihidupkan kembali sebagai alat kontrol sosial.">Setiap dekade memiliki "kebangkitan PKI"-nya sendiri.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: 1965: Bukan Hitam Putih -->
+    <section id="1965" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold propaganda-text mb-12 text-center">
+                <span class="text-red-600">1965:</span> <span class="text-white">Bukan Hitam Putih</span>
+            </h2>
+            
+            <!-- Timeline -->
+            <div class="max-w-2xl mx-auto">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                        <h3 class="text-xl font-bold mb-2">30 September 1965</h3>
+                        <p class="text-gray-300">Penculikan dan pembunuhan 6 jenderal oleh kelompok yang menyebut diri mereka "Gerakan 30 September".</p>
+                        <div class="mt-3 text-sm text-gray-400 italic hover-reveal" data-text="Versi resmi Orde Baru menyederhanakan kompleksitas peristiwa ini selama 32 tahun.">Peristiwa yang masih diperdebatkan hingga hari ini.</div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                        <h3 class="text-xl font-bold mb-2">Oktober 1965 - 1966</h3>
+                        <p class="text-gray-300">Pembantaian massal terhadap anggota dan simpatisan PKI di seluruh Indonesia.</p>
+                        <div class="mt-3 text-sm text-gray-400 italic">Estimasi korban: 500,000 - 1,000,000 jiwa.</div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                        <h3 class="text-xl font-bold mb-2">1967</h3>
+                        <p class="text-gray-300">Soeharto menjadi Presiden, Orde Baru dimulai dengan doktrin anti-komunisme sebagai pilar utama.</p>
+                        <div class="mt-3 text-sm text-gray-400 italic hover-reveal" data-text="Dokumen CIA yang dideklasifikasi menunjukkan keterlibatan AS dalam mendukung pembantaian.">Pembentukan rezim baru dengan dukungan Barat.</div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                        <h3 class="text-xl font-bold mb-2">1998</h3>
+                        <p class="text-gray-300">Jatuhnya Orde Baru, namun stigma komunis tetap bertahan dalam UU dan kebijakan.</p>
+                        <div class="mt-3 text-sm text-gray-400 italic">Tap MPRS No.XXV/1966 tentang Pembubaran PKI masih berlaku.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                    <h3 class="text-xl font-bold mb-4 text-red-500">Survivor Testimony</h3>
+                    <p class="text-gray-300 italic mb-4">"Mereka membawa ayah saya malam itu. Kami tidak pernah melihatnya lagi. Ibu saya dipaksa menandatangani surat bahwa dia anggota PKI, padahal dia hanya guru SD."</p>
+                    <p class="text-sm text-gray-400">- Anonymous, Jawa Tengah</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                    <h3 class="text-xl font-bold mb-4 text-red-500">Dokumen Rahasia</h3>
+                    <p class="text-gray-300 mb-4">Dokumen CIA tahun 1968: "Kami telah memberikan daftar nama komunis kepada militer Indonesia. Pembunuhan massal mungkin cara terbaik untuk mencegah penyebaran komunisme di Asia Tenggara."</p>
+                    <div class="text-sm text-gray-400 italic">Declassified in 2001</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Orba Menang, Siapa yang Hilang? -->
+    <section id="orba" class="py-20 newspaper-texture">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold propaganda-text mb-12 text-center">
+                <span class="text-white">Orba Menang,</span> <span class="text-red-600">Siapa yang Hilang?</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- Censorship Item 1 -->
+                <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                    <h3 class="text-xl font-bold mb-3 text-red-500">Buku-Buku</h3>
+                    <p class="text-gray-300 mb-4">Lebih dari 1,000 judul buku dilarang karena dianggap "berpaham kiri".</p>
+                    <div class="text-sm text-gray-400 italic">Termasuk karya Pramoedya Ananta Toer yang dilarang hingga 2006.</div>
+                </div>
+                
+                <!-- Censorship Item 2 -->
+                <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                    <h3 class="text-xl font-bold mb-3 text-red-500">Film & Seni</h3>
+                    <p class="text-gray-300 mb-4">Penyensoran terhadap karya seni yang mengkritik pemerintah atau dianggap "kiri".</p>
+                    <div class="text-sm text-gray-400 italic">Film "Pengkhianatan G30S/PKI" wajib ditonton siswa selama 32 tahun.</div>
+                </div>
+                
+                <!-- Censorship Item 3 -->
+                <div class="bg-gray-900 p-6 rounded border border-red-900 hover-grow">
+                    <h3 class="text-xl font-bold mb-3 text-red-500">Pendidikan</h3>
+                    <p class="text-gray-300 mb-4">Sejarah versi Orde Baru diajarkan sebagai kebenaran mutlak di sekolah.</p>
+                    <div class="text-sm text-gray-400 italic">Kritik terhadap pemerintah dianggap sebagai tindakan subversif.</div>
+                </div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-gray-900 p-8 rounded border border-red-900 hover-grow">
+                <h3 class="text-2xl font-bold mb-4 text-center text-red-500">Warisan Orba yang Masih Bertahan</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-4 border border-red-900 rounded">
+                        <div class="text-3xl font-bold text-red-500 mb-2">UU ITE</div>
+                        <p class="text-sm text-gray-300">Penyalahgunaan pasal karet untuk membungkam kritik</p>
+                    </div>
+                    <div class="p-4 border border-red-900 rounded">
+                        <div class="text-3xl font-bold text-red-500 mb-2">Tap MPRS</div>
+                        <p class="text-sm text-gray-300">Pembubaran PKI masih berlaku secara hukum</p>
+                    </div>
+                    <div class="p-4 border border-red-900 rounded">
+                        <div class="text-3xl font-bold text-red-500 mb-2">Pancasila</div>
+                        <p class="text-sm text-gray-300">Ditafsirkan secara sempit sebagai alat politik</p>
+                    </div>
+                    <div class="p-4 border border-red-900 rounded">
+                        <div class="text-3xl font-bold text-red-500 mb-2">Stigma</div>
+                        <p class="text-sm text-gray-300">Komunisme tetap menjadi momok politik</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Komunis vs Koruptor -->
+    <section id="koruptor" class="py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold propaganda-text mb-12 text-center">
+                <span class="text-red-600">Komunis</span> <span class="text-white">vs</span> <span class="text-yellow-500">Koruptor</span>
+            </h2>
+            
+            <div class="max-w-4xl mx-auto mb-12">
+                <p class="text-xl text-center mb-8">
+                    <span class="hover-reveal" data-text="Ironisnya, mereka yang paling keras berteriak 'anti-komunis' seringkali adalah yang paling rakus menggerogoti uang rakyat.">Siapa yang lebih berbahaya bagi Indonesia modern?</span>
+                </p>
+                
+                <!-- Comparison Table -->
+                <div class="overflow-x-auto">
+                    <table class="w-full border-collapse">
+                        <thead>
+                            <tr class="border-b border-red-900">
+                                <th class="p-4 text-left text-red-500">PKI (Dituduhkan)</th>
+                                <th class="p-4 text-left text-yellow-500">Koruptor (Nyata)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-800 hover:bg-gray-900">
+                                <td class="p-4">Ingin menghapus agama</td>
+                                <td class="p-4">Menggunakan agama sebagai kedok</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-gray-900">
+                                <td class="p-4">Anti-Pancasila</td>
+                                <td class="p-4">Memanipulasi Pancasila untuk kekuasaan</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-gray-900">
+                                <td class="p-4">Ingin merampas harta orang kaya</td>
+                                <td class="p-4">Merampas uang rakyat untuk diri sendiri</td>
+                            </tr>
+                            <tr class="border-b border-gray-800 hover:bg-gray-900">
+                                <td class="p-4">Dituduh membunuh jenderal</td>
+                                <td class="p-4">Membunuh rakyat dengan kemiskinan</td>
+                            </tr>
+                            <tr class="hover:bg-gray-900">
+                                <td class="p-4">Dibubarkan tahun 1966</td>
+                                <td class="p-4">Masih aktif hingga hari ini</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <p class="text-gray-400 max-w-2xl mx-auto italic">
+                    "Kami tidak mendukung komunisme, tapi bukankah lebih penting melawan korupsi yang nyata daripada hantu masa lalu?"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Interactive FAQ Satire -->
+    <section id="faq" class="py-20 newspaper-texture">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold propaganda-text mb-12 text-center">
+                <span class="text-white">FAQ</span> <span class="text-red-600">Satire</span>
+            </h2>
+            
+            <div class="max-w-3xl mx-auto space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-gray-900 rounded overflow-hidden border border-red-900 hover-grow">
+                    <button class="faq-question w-full text-left p-4 font-bold bg-gray-800 hover:bg-gray-700 transition flex justify-between items-center">
+                        <span>Benarkah PKI membunuh 6 jenderal?</span>
+                        <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer p-4 hidden">
+                        <p class="text-gray-300">Faktanya, Gerakan 30 September yang menculik dan membunuh jenderal-jenderal tersebut adalah kelompok kecil dalam militer. PKI sebagai organisasi tidak terlibat langsung, meskipun beberapa anggotanya mungkin bersimpati. Namun, narasi Orde Baru menyederhanakan kompleksitas peristiwa ini untuk membenarkan pembantaian massal berikutnya.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-gray-900 rounded overflow-hidden border border-red-900 hover-grow">
+                    <button class="faq-question w-full text-left p-4 font-bold bg-gray-800 hover:bg-gray-700 transition flex justify-between items-center">
+                        <span>Apakah PKI anti-agama?</span>
+                        <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer p-4 hidden">
+                        <p class="text-gray-300">Ironisnya, banyak anggota PKI yang taat beragama. Di Jawa Timur, basis PKI justru di daerah NU. Propaganda anti-agama sengaja dibesar-besarkan untuk mendapatkan dukungan dari kelompok agama melawan PKI. Faktanya, PKI Indonesia memiliki karakter yang berbeda dengan partai komunis di negara lain.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-gray-900 rounded overflow-hidden border border-red-900 hover-grow">
+                    <button class="faq-question w-full text-left p-4 font-bold bg-gray-800 hover:bg-gray-700 transition flex justify-between items-center">
+                        <span>Mengapa kita masih takut dengan PKI yang sudah dibubarkan 50+ tahun lalu?</span>
+                        <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer p-4 hidden">
+                        <p class="text-gray-300">Karena hantu PKI lebih berguna daripada PKI itu sendiri. Setiap kali ada kritik terhadap pemerintah, tuduhan "komunis" bisa digunakan untuk membungkam oposisi. Ini warisan Orde Baru yang masih dipelihara oleh elit politik yang takut kehilangan kekuasaan.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-gray-900 rounded overflow-hidden border border-red-900 hover-grow">
+                    <button class="faq-question w-full text-left p-4 font-bold bg-gray-800 hover:bg-gray-700 transition flex justify-between items-center">
+                        <span>Bukankah melarang komunisme adalah bentuk pembelaan terhadap Pancasila?</span>
+                        <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="faq-answer p-4 hidden">
+                        <p class="text-gray-300">Lucunya, banyak yang berteriak "Pancasila" sambil korupsi, menindas rakyat, dan memanipulasi demokrasi. Pancasila seharusnya tentang keadilan sosial, tapi justru kesenjangan semakin lebar. Mungkin kita perlu bertanya: siapa yang sebenarnya mengkhianati Pancasila?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-red-900 py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <div class="text-3xl font-bold propaganda-text text-red-600 mb-4">PKI BACK?</div>
+                <p class="text-gray-400 max-w-2xl mx-auto italic">
+                    "Website ini adalah satir politik artistik. Tidak mempromosikan komunisme, tapi mengajak berpikir kritis tentang sejarah kita."
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <!-- Resources -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-red-500">Sumber Belajar</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-red-400 transition">Jejak Rekam Orde Baru - John Roosa</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-red-400 transition">The Act of Killing (Documentary)</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-red-400 transition">Rekam Jejak 1965 - Komnas HAM</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-red-400 transition">Podcast: Sejarah yang Disembunyikan</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Easter Egg -->
+                <div class="text-center">
+                    <button id="easterEggBtn" class="bg-red-900 hover:bg-red-800 text-white px-6 py-2 rounded mb-4">
+                        Klik untuk Kejutan
+                    </button>
+                    <div id="easterEggContent" class="hidden">
+                        <p class="text-gray-300 italic">"Sejarah resmi selalu ditulis oleh para pemenang." - Pramoedya Ananta Toer</p>
+                        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100' height='100' fill='%237f1d1d'/><text x='50%' y='50%' font-family='monospace' font-size='10' fill='white' text-anchor='middle' dominant-baseline='middle'>REDACTED</text></svg>" class="mx-auto mt-4" alt="Redacted">
+                    </div>
+                </div>
+                
+                <!-- Disclaimer -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4 text-red-500">Disclaimer</h3>
+                    <p class="text-gray-400 text-sm">
+                        Website ini adalah karya satir dan ekspresi artistik. Tidak bertujuan untuk mempromosikan ideologi tertentu, melainkan mendorong diskusi kritis tentang sejarah Indonesia. Semua referensi historis didasarkan pada dokumen dan penelitian yang tersedia untuk publik.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                © 2023 PKI BACK? Satire Project | Dibuat untuk tujuan edukasi sejarah
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle FAQ answers
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const answer = button.nextElementSibling;
+                const icon = button.querySelector('svg');
+                
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+        
+        // Sound toggle
+        const soundToggle = document.getElementById('soundToggle');
+        const radioChatter = document.getElementById('radioChatter');
+        const soundIcon = document.querySelector('.sound-icon');
+        
+        soundToggle.addEventListener('click', () => {
+            if (radioChatter.paused) {
+                radioChatter.play();
+                soundIcon.textContent = '🔊 ON';
+            } else {
+                radioChatter.pause();
+                soundIcon.textContent = '🔇 OFF';
+            }
+        });
+        
+        // Easter egg
+        const easterEggBtn = document.getElementById('easterEggBtn');
+        const easterEggContent = document.getElementById('easterEggContent');
+        
+        easterEggBtn.addEventListener('click', () => {
+            easterEggContent.classList.toggle('hidden');
+        });
+        
+        // Redacted hover effect
+        document.querySelectorAll('.redacted').forEach(el => {
+            el.addEventListener('click', () => {
+                el.classList.toggle('revealed');
+            });
+        });
+        
+        // Glitch effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const glitchText = document.querySelector('.glitch-effect');
+            
+            if (scrollPosition % 20 === 0) {
+                glitchText.style.animation = 'none';
+                glitchText.offsetHeight; // Trigger reflow
+                glitchText.style.animation = 'glitch 1s linear infinite';
+            }
+        });
+    </script>
+</body>
+</html>
